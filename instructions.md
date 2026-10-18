@@ -1,41 +1,110 @@
 # Currency Analytics Engine
 
-A Python-based currency conversion and analytics application with a graphical user interface (GUI).
+A Python desktop application for **real-time currency conversion, historical exchange-rate analysis, and basic statistical forecasting**.
 
-The application retrieves live and historical exchange-rate data from online APIs and performs basic statistical analysis, including moving averages, volatility calculation, and next-rate forecasting.
+This project demonstrates practical skills in **Python development, REST API integration, data processing, statistical analysis, GUI development, input validation, and exception handling**.
 
 ## Features
 
-- Live currency conversion
+- Real-time currency conversion
 - Historical exchange-rate retrieval
+- 45-day exchange-rate analysis
 - 7-day moving average
 - Annualised volatility calculation
-- Simple statistical next-rate forecasting
+- Linear regression-based next-rate forecasting
 - Tkinter graphical user interface
-- Input validation and error handling
+- Input validation
 - API and network error handling
 
-## Technologies Used
+## Technologies
 
 - **Python 3.12**
-- **Tkinter** — GUI development
-- **Requests** — HTTP/API communication
-- **Frankfurter API** — exchange-rate and historical data
-- **Statistics module** — mean and standard deviation calculations
-- **Math module** — mathematical calculations
+- **Tkinter / ttk**
+- **Requests**
+- **Frankfurter API**
+- **Statistics module**
+- **Math module**
+- **REST API**
+- **JSON data processing**
+- **Statistical analysis**
 
-## Prerequisites
+## Key Implementation
 
-Before running the application, make sure you have:
+### REST API Integration
+
+The application integrates with the Frankfurter API to retrieve current and historical exchange-rate data.
+
+The implementation includes:
+
+- HTTP GET requests
+- API parameter handling
+- JSON response processing
+- HTTP status validation
+- Network exception handling
+
+### Currency Conversion
+
+Users can enter an amount and select the source and target currencies. The application retrieves the latest exchange rate and calculates the converted value.
+
+Supported currencies:
+
+`USD` `EUR` `GBP` `MYR` `JPY` `AUD` `SGD`
+
+### Historical Exchange-Rate Analysis
+
+The application retrieves approximately 45 days of historical exchange-rate data and performs several statistical calculations.
+
+#### 7-Day Moving Average
+
+Calculates the average exchange rate across the latest seven observations to provide a simple indication of the recent exchange-rate level.
+
+#### Annualised Volatility
+
+Daily percentage changes are calculated from the historical rates. The standard deviation of these returns is then annualised using:
+
+```text
+Annualised Volatility = Daily Standard Deviation × √252
+```
+
+#### Next-Rate Forecast
+
+A simple linear regression calculation is used to estimate the next exchange-rate value based on historical observations.
+
+This is a basic statistical forecasting method intended for analytical and demonstration purposes.
+
+## Error Handling
+
+The application includes handling for:
+
+- Invalid numerical input
+- Negative amounts
+- Missing currency selections
+- Invalid currency pairs
+- Network connection failures
+- HTTP/API errors
+- Invalid API data
+- Insufficient historical data
+
+User-friendly error messages are displayed through the graphical interface.
+
+## Project Structure
+
+```text
+Currency-Analytics-Engine/
+│
+├── se_currency_converter.py
+└── README.md
+```
+
+## Requirements
 
 - Python 3.12 or later
-- An active internet connection
-
-The application requires an internet connection because exchange-rate data is retrieved from online APIs.
+- Internet connection
+- `requests` package
 
 ## Installation
 
-Open **Command Prompt** and install the required dependency:
+Install the required Python dependency:
 
 ```bash
 py -3.12 -m pip install requests
@@ -43,19 +112,19 @@ py -3.12 -m pip install requests
 
 ## Running the Application
 
-Navigate to the project folder containing the Python file.
-
-Then run:
+Run the application from the project directory:
 
 ```bash
 py -3.12 se_currency_converter.py
 ```
 
+The Tkinter graphical interface will open after the application starts.
+
 ## Usage
 
 ### Currency Conversion
 
-1. Enter the amount to convert.
+1. Enter the amount.
 2. Select the **From Currency**.
 3. Select the **To Currency**.
 4. Click **Convert**.
@@ -73,53 +142,37 @@ py -3.12 se_currency_converter.py
    - Annualised volatility
    - Next-rate forecast
 
-## Analytics Methods
+## Skills Demonstrated
 
-### 7-Day Moving Average
+- Python programming
+- REST API integration
+- JSON data processing
+- GUI development with Tkinter
+- Data validation
+- Exception handling
+- Statistical analysis
+- Basic linear regression
+- External API consumption
+- User-focused application development
 
-The application calculates the average exchange rate across the most recent seven observations.
+## Limitations
 
-This provides a simple measure of the recent exchange-rate level.
+The forecasting feature uses a simple linear regression approach and is not intended to provide guaranteed predictions of future currency prices or professional financial advice.
 
-### Annualised Volatility
+The application also requires an active internet connection because exchange-rate data is retrieved from an external API.
 
-The application calculates daily percentage changes in the exchange rate and uses their standard deviation to estimate annualised volatility.
+## Future Improvements
 
-The calculation uses:
-
-```text
-Annualised Volatility = Daily Standard Deviation × √252
-```
-
-### Next-Rate Forecast
-
-A simple linear regression model is used to estimate the next exchange-rate value based on historical observations.
-
-This is a basic statistical forecasting approach implemented for analytical purposes.
-
-## Error Handling
-
-The application includes handling for:
-
-- Invalid numerical input
-- Missing currency selections
-- Unsupported currency pairs
-- Network connection problems
-- Invalid or unexpected API data
-
-## Project Structure
-
-```text
-se_currency_converter.py
-README.md
-```
-
-## Important Note
-
-The forecasting feature provides a **simple statistical estimate based on historical exchange-rate trends**. It is not intended to provide guaranteed predictions of future currency prices or professional financial advice.
+- Interactive exchange-rate charts
+- Additional currency support
+- Configurable historical periods
+- More advanced forecasting models
+- CSV export
+- Automated unit testing
+- Improved GUI design
 
 ## Project Status
 
 **Completed**
 
-The current version includes currency conversion, historical data retrieval, statistical analysis, forecasting, GUI development, API integration, and error handling.
+This project demonstrates an end-to-end Python application combining GUI development, REST API integration, data processing, statistical analysis, basic forecasting, and error handling.
